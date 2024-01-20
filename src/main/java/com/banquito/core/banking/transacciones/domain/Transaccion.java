@@ -7,6 +7,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Version;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.mongodb.lang.NonNull;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,7 +17,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Document(collection = "Transacciones")
 public class Transaccion {
-    @Id
+    @Id  @NonNull
     private String id;
     private Number codCuentaOrigen;
     private Number codCuentaDestino;
