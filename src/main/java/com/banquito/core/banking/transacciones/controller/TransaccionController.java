@@ -19,7 +19,7 @@ public class TransaccionController {
         this.transaccionService = transaccionService;
     }
 
-    @GetMapping
+    @GetMapping("/listar")
     public List<Transaccion> buscarTodas(){
         return transaccionService.listarTodo();
     }
