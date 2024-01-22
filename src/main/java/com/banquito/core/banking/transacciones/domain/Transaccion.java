@@ -6,6 +6,7 @@ import java.util.Date;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Version;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,64 +17,37 @@ import lombok.Setter;
 @Document(collection = "Transacciones")
 public class Transaccion {
     @Id
-    private String id;
-    private Number codCuentaOrigen;
-    private Number codCuentaDestino;
+    private String  id;
+    @Field("cod_cuenta_origen")
+    private String codCuentaOrigen;
+    @Field("cod_cuenta_destino")
+    private String codCuentaDestino;
+    @Field("cod_transaccion")
     private Number codTransaccion;
-    private Number codUnico;
+    @Field("cod_unico")
+    private String codUnico;
+    @Field("tipo_afectacion")
     private String tipoAfectacion;
-    private Number valorDebe;
-    private Number valorHaber;
+    @Field("valor_debe")
+    private Float valorDebe;
+    @Field("valor_haber")
+    private Float valorHaber;
+    @Field("tipo_transaccion")
     private String tipoTransaccion;
     private String detalle;
-    private Date fechaCreacion;
+    @Field("fecha_creacion")
+    private Date  fechaCreacion;
     private String estado;
+    @Field("fecha_afectacion")
     private Date fechaAfectacion;
+    @Field("fecha_ultimo_cambio")
     private Date fechaUltimoCambio;
     @Version
     private Long version;
 
-    public Transaccion(String id) {
+    public Transaccion(String  id) {
         this.id = id;
     }
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Transaccion other = (Transaccion) obj;
-        if (id == null) {
-            if (other.id != null)
-                return false;
-        } else if (!id.equals(other.id))
-            return false;
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Transaccion [id=" + id + ", codCuentaOrigen=" + codCuentaOrigen + ", codCuentaDestino="
-                + codCuentaDestino + ", codTransaccion=" + codTransaccion + ", codUnico=" + codUnico
-                + ", tipoAfectacion=" + tipoAfectacion + ", valorDebe=" + valorDebe + ", valorHaber=" + valorHaber
-                + ", tipoTransaccion=" + tipoTransaccion + ", detalle=" + detalle + ", fechaCreacion=" + fechaCreacion
-                + ", estado=" + estado + ", fechaAfectacion=" + fechaAfectacion + ", fechaUltimoCambio="
-                + fechaUltimoCambio + ", version=" + version + "]";
-    }
-
-    
-
-    
 
 }
